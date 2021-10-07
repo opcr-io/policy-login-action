@@ -1,0 +1,25 @@
+name: "Policy Login"
+description: "Login to Open Policy Registry (opcr.io)"
+author: "Aserto Inc."
+branding:
+  icon: log-in
+  color: blue
+inputs:
+  username:
+    description: "username"
+    required: true
+  password:
+    description: "password"
+    required: true
+  server:
+    description: "registry service hostname"
+    required: true
+    default: "opcr.io"
+  verbosity:
+    description: "verbosity level [info|error|debug|trace]"
+    required: true
+    default: error
+runs:
+  using: docker
+  image: 'docker://ghcr.io/opcr-io/policy:latest'
+  entrypoint: /app/login.sh
