@@ -15,13 +15,13 @@ Default: empty
 
 ### `password`
 
-**Required** The password, which is a Github Personal Access Token. 
+**Required** The password, which is a Github Personal Access Token.
 
 Default: empty
 
 ### `server`
 
-**Required** The registry service hostname. 
+**Required** The registry service hostname.
 
 Default: `opcr.io`
 
@@ -53,12 +53,12 @@ jobs:
     runs-on: ubuntu-latest
     name: build
     steps:
-    
+
     - uses: actions/checkout@v2
 
     - name: Policy Login
       id: policy-login
-      uses: opcr-io/policy-login-action@v1
+      uses: opcr-io/policy-login-action@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
@@ -67,20 +67,20 @@ jobs:
 
     - name: Policy Build
       id: policy-build
-      uses: opcr-io/policy-build-action@v1
+      uses: opcr-io/policy-build-action@v2
       with:
         src: peoplefinder/src
-        tag: datadude/peoplefinder:$(sver -n patch) 
+        tag: datadude/peoplefinder:$(sver -n patch)
         revision: "$GITHUB_SHA"
 
     - name: Policy Push
       id: policy-push
-      uses: opcr-io/policy-push-action@v1
+      uses: opcr-io/policy-push-action@v2
       with:
         tag: datadude/peoplefinder:$(sver -n patch)
 
     - name: Policy Logout
       id: policy-logout
-      uses: opcr-io/policy-logout-action@v1
+      uses: opcr-io/policy-logout-action@v2
 
 ```
