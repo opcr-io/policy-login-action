@@ -58,7 +58,7 @@ jobs:
 
     - name: Policy Login
       id: policy-login
-      uses: opcr-io/policy-login-action@v3
+      uses: opcr-io/policy-login-action@v4
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
@@ -67,20 +67,22 @@ jobs:
 
     - name: Policy Build
       id: policy-build
-      uses: opcr-io/policy-build-action@v3
+      uses: opcr-io/policy-build-action@v4
       with:
         src: peoplefinder/src
-        tag: datadude/peoplefinder:$(sver -n patch)
+        tag: demo/peoplefinder:$(svu patch)
         revision: "$GITHUB_SHA"
 
     - name: Policy Push
       id: policy-push
-      uses: opcr-io/policy-push-action@v3
+      uses: opcr-io/policy-push-action@v4
       with:
-        tag: datadude/peoplefinder:$(sver -n patch)
+        tag: demo/peoplefinder:$(svu patch)
 
     - name: Policy Logout
       id: policy-logout
-      uses: opcr-io/policy-logout-action@v3
+      uses: opcr-io/policy-logout-action@v4
 
 ```
+
+> NOTE: The above example leverages the `svu` (semantic version utility) from https://github.com/caarlos0/svu
