@@ -1,5 +1,5 @@
 name: "Policy Login"
-description: "Login to Open Policy Registry (opcr.io)"
+description: "Login to Policy Registry"
 author: "gert@d5s.io"
 branding:
   icon: log-in
@@ -14,7 +14,7 @@ inputs:
   server:
     description: "registry service hostname"
     required: true
-    default: "opcr.io"
+    default: "ghcr.io"
   verbosity:
     description: "verbosity level [info|error|debug|trace]"
     required: true
